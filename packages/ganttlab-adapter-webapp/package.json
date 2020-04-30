@@ -1,0 +1,50 @@
+{
+  "name": "ganttlab-adapter-webapp",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Clorichel <contact@clorichel.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build:lib": "echo 'no lib to build here'",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "d3-v3": "npm:d3@^3.5.17",
+    "ganttlab-entities": "0.0.0",
+    "ganttlab-gateways": "0.0.0",
+    "ganttlab-use-cases": "0.0.0",
+    "localforage": "^1.7.3",
+    "lodash": "^4.17.15",
+    "moment-timezone": "^0.5.28",
+    "tailwindcss": "^1.2.0",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.1",
+    "vuex": "^3.1.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.150",
+    "@types/moment-timezone": "^0.5.13",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-plugin-typescript": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.8.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuex-module-decorators": "^0.16.1"
+  }
+}
