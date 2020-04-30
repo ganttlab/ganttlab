@@ -1,0 +1,19 @@
+{
+  "name": "ganttlab-use-cases",
+  "private": true,
+  "author": "Clorichel <contact@clorichel.com>",
+  "license": "Apache-2.0",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build:lib": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "ganttlab-entities": "0.0.0"
+  }
+}
