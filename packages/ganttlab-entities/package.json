@@ -1,0 +1,17 @@
+{
+  "name": "ganttlab-entities",
+  "private": true,
+  "author": "Clorichel <contact@clorichel.com>",
+  "license": "Apache-2.0",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build:doc": "typedoc --readme none --mode file --excludeNotExported --exclude \"**/*+(index).ts\" --out ../../typedoc/ganttlab-entities",
+    "build:lib": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
