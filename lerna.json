@@ -4,5 +4,11 @@
     "packages/*"
   ],
   "useWorkspaces": true,
-  "version": "independent"
+  "version": "independent",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    }
+  }
 }
