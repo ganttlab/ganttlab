@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "ganttlab-entities": "0.0.0",
-    "ganttlab-use-cases": "0.0.0",
+    "ganttlab-entities": "0.1.0",
+    "ganttlab-use-cases": "0.1.0",
     "parse-link-header": "^1.0.1"
   }
 }
