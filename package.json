@@ -1,0 +1,46 @@
+{
+  "name": "ganttlab-monorepo",
+  "private": true,
+  "author": "Clorichel <contact@clorichel.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build:doc": "lerna run --parallel build:doc",
+    "postinstall": "yarn build:lib:entities && yarn build:lib:use-cases && yarn build:lib:gateways",
+    "build:lib:entities": "yarn workspace ganttlab-entities run build:lib",
+    "build:lib:use-cases": "yarn workspace ganttlab-use-cases run build:lib",
+    "build:lib:gateways": "yarn workspace ganttlab-gateways run build:lib",
+    "build:webapp": "yarn workspace ganttlab-adapter-webapp run build",
+    "watch": "lerna run --parallel watch",
+    "webapp": "yarn workspace ganttlab-adapter-webapp run serve",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": ">=4",
+    "lerna": "^3.20.2",
+    "lint-staged": ">=10",
+    "prettier": "^2.0.2",
+    "typedoc": "^0.17.4",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

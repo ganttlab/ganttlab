@@ -1,0 +1,89 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+
+
+Parameters:
+  DomainName:
+    Type: String
+    Default: app.ganttlab.org
+    Description: The domain name to use to serve this project.
+
+  ZoneName:
+    Type: String
+    Default: ganttlab.org
+    Description: The hosted zone name coming along with the DomainName used.
+
+
+Resources:
+  Certificate:
+    Type: "AWS::CertificateManager::Certificate"
+    Properties: 
+      DomainName: !Ref ZoneName
+      DomainValidationOptions:
+        - DomainName: !Ref ZoneName
+          ValidationDomain: !Ref ZoneName
+      SubjectAlternativeNames:
+        - !Sub "*.${ZoneName}"
+
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      AccessControl: PublicRead
+      BucketName: !Ref AWS::StackName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+    # You can delete only empty buckets. Deletion fails for buckets that have contents.
+    # see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html
+    DeletionPolicy: Retain
+
+  S3BucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Join ['', ['arn:aws:s3:::', !Ref S3Bucket, /*]]
+
+  CloudFrontDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Aliases:
+          - !Ref DomainName
+        DefaultRootObject: index.html
+        Origins:
+          - Id: !Sub S3-${AWS::StackName}
+            DomainName: !Select [2, !Split ["/", !GetAtt S3Bucket.WebsiteURL]]
+            CustomOriginConfig:
+              HTTPPort: "80"
+              HTTPSPort: "443"
+              OriginProtocolPolicy: http-only
+        DefaultCacheBehavior:
+          ViewerProtocolPolicy: allow-all
+          ForwardedValues:
+            QueryString: true
+          TargetOriginId: !Sub S3-${AWS::StackName}
+          Compress: true
+        ViewerCertificate:
+          AcmCertificateArn: !Ref Certificate
+          SslSupportMethod: sni-only
+        IPV6Enabled: false
+
+  DnsRecord:
+    Type: "AWS::Route53::RecordSet"
+    Properties:
+      HostedZoneName: !Sub ${ZoneName}.
+      AliasTarget:
+        DNSName: !GetAtt CloudFrontDistribution.DomainName
+        EvaluateTargetHealth: false
+        # HostedZoneId value for CloudFront is this one
+        # see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html
+        HostedZoneId: Z2FDTNDATAQYW2
+      Name: !Ref DomainName
+      Type: A
+  
