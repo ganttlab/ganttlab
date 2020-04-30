@@ -32,7 +32,7 @@ AWS:
   stage: deploy
   image:
     name: amazon/aws-cli
-    entrypoint: ["/bin/bash"]
+    entrypoint: ["/bin/bash", "-l", "-c"]
   dependencies:
     - webapp
   script:
