@@ -29,6 +29,7 @@ webapp:docker:
     - yarn run build:webapp
 
 sonarcloud:
+  stage: deploy
   variables:
     SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
     GIT_DEPTH: "0"
