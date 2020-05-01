@@ -28,6 +28,20 @@ webapp:docker:
   script:
     - yarn run build:webapp
 
+sonarcloud:
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+    GIT_DEPTH: "0"
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - sonar-scanner
+
 AWS:
   stage: deploy
   image:
