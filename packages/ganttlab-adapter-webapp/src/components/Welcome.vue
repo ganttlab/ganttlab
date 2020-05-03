@@ -18,9 +18,9 @@
           <p class="w-full pt-1 text-sm text-center text-gray-600">
             By using this service you accept our
             <a
-              href="https://gitlab.com/ganttlab/ganttlab/-/blob/master/docs/privacy-policy.md"
+              href="https://www.ganttlab.org/privacy/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               @click="goToPrivacy"
             >Privacy Policy</a>
           </p>
@@ -140,9 +140,9 @@
         <p class="w-full mb-6 text-sm text-center">
           By using this service you accept our
           <a
-            href="https://gitlab.com/ganttlab/ganttlab/-/blob/master/docs/privacy-policy.md"
+            href="https://www.ganttlab.org/privacy/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             @click="goToPrivacy"
           >Privacy Policy</a>
         </p>
