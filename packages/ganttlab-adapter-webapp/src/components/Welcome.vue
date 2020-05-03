@@ -18,9 +18,9 @@
           <p class="w-full pt-1 text-sm text-center text-gray-600">
             By using this service you accept our
             <a
-              href="https://gitlab.com/ganttlab/ganttlab/-/blob/master/docs/privacy-policy.md"
+              href="https://www.ganttlab.org/privacy/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               @click="goToPrivacy"
             >Privacy Policy</a>
           </p>
@@ -30,7 +30,7 @@
                 <a
                   href="https://www.ganttlab.org"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   @click="goToReadMore"
                 >
                   Read more about GanttLab
@@ -42,7 +42,7 @@
                 <a
                   href="https://clorichel.com/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   @click="goToAuthor"
                 >Pierre-Alexandre Clorichel</a>
               </p>
@@ -107,7 +107,6 @@
           <Icon class="text-gray-500 mr-2" size="56" name="logo-ganttlab" />
           <h1 class="text-4xl font-lead leading-none">GanttLab</h1>
         </div>
-        <!-- <h1 class="text-center text-4xl font-lead leading-none">GanttLab</h1> -->
       </div>
       <div class="flex-grow p-2 mt-6">
         <Steps3 class="w-full" :current="currentStep" @set-step="forceStep($event)">
@@ -141,19 +140,14 @@
         <p class="w-full mb-6 text-sm text-center">
           By using this service you accept our
           <a
-            href="https://gitlab.com/ganttlab/ganttlab/-/blob/master/docs/privacy-policy.md"
+            href="https://www.ganttlab.org/privacy/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             @click="goToPrivacy"
           >Privacy Policy</a>
         </p>
         <div class="flex items-center justify-between text-sm mb-6 px-4">
-          <a
-            href="https://www.ganttlab.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            @click="goToReadMore"
-          >
+          <a href="https://www.ganttlab.org" target="_blank" rel="noopener" @click="goToReadMore">
             Read more
             <Icon size="14" class="mb-1" name="open-outline" />
           </a>
@@ -181,7 +175,7 @@
           <a
             href="https://clorichel.com/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             @click="goToAuthor"
           >Pierre-Alexandre Clorichel</a>
         </p>

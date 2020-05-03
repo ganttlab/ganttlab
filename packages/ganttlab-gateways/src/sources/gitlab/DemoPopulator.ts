@@ -97,7 +97,7 @@ const demoMilestones: Array<GitLabMilestoneWithId> = [
   {
     title: 'With a start date',
     created_at: '',
-    start_date: yesterday.toISOString(),
+    start_date: twoDaysAfter.toISOString(),
   },
   {
     title: 'Start and due date',
@@ -178,6 +178,11 @@ function createIssues(): void {
       title: 'Late in a milestone',
       description: `GanttStart: ${fiveDaysEarlier.toISOString()}\nGanttDue: ${yesterday.toISOString()}`,
       milestone_id: demoMilestones[3].id,
+    },
+    {
+      title: 'Created long ago in a milestone with start',
+      created_at: fiveDaysEarlier.toISOString(),
+      milestone_id: demoMilestones[1].id,
     },
   );
   /* eslint-enable @typescript-eslint/camelcase */
