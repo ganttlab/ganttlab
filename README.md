@@ -24,8 +24,8 @@ GanttLab is a **frontend only** application, built as a static website. It lever
 | Each issue **start date**: | Each issue **due date**: |
 |----------------------------|--------------------------|
 | 1. is read from the `GanttStart` value in the issue description, | 1. is read from the `GanttDue` value in the issue description, |
-| 2. or defaults to the issue creation date. | 2. _(GitLab only)_ or fallbacks to the issue due date, |
-| | 3. _(GitLab only)_ or to the issue milestone due date, |
+| 2. _(GitLab only)_ or fallbacks to the issue milestone start date, | 2. _(GitLab only)_ or fallbacks to the issue due date, |
+| 3. ultimately defaults to the issue creation date. | 3. _(GitLab only)_ or to the issue milestone due date, |
 | | 4. ultimately defaults to the day after the issue start date, simulating all your issues have to be done in one day. |
 
 You consequently have maximum control over your issues and tasks management in the Gantt chart **right from your issue description** with those two simple [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) `YYYY-MM-DD` calendar dates:
