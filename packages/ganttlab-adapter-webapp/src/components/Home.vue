@@ -2,10 +2,17 @@
   <div class="w-full">
     <div class="mb-12 p-4 bg-gray-200">
       <div class="flex items-center text-gray-600">
-        <div class="w-64 flex justify-start items-center">
+        <a
+          class="w-64 flex justify-start items-center"
+          href="https://www.ganttlab.org/"
+          target="_blank"
+          rel="noopener"
+          @click="goToWebsite"
+        >
           <Icon class="text-gray-400" size="30" name="logo-ganttlab" />
           <h1 class="text-gray-800 text-2xl leading-none font-lead ml-2">GanttLab</h1>
-        </div>
+        </a>
+
         <div class="flex-grow flex items-center justify-center">
           <a
             class="flex items-center"
@@ -337,6 +344,10 @@ export default class Home extends Vue {
       'Logged out',
       this.sourceGateway ? this.sourceGateway.slug : undefined,
     );
+  }
+
+  goToWebsite() {
+    trackInteractionEvent('Click', 'Website');
   }
 
   goToSource() {
