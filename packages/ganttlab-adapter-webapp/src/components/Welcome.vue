@@ -30,7 +30,7 @@
                 <a
                   href="https://www.ganttlab.org"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   @click="goToReadMore"
                 >
                   Read more about GanttLab
@@ -42,7 +42,7 @@
                 <a
                   href="https://clorichel.com/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   @click="goToAuthor"
                 >Pierre-Alexandre Clorichel</a>
               </p>
@@ -147,12 +147,7 @@
           >Privacy Policy</a>
         </p>
         <div class="flex items-center justify-between text-sm mb-6 px-4">
-          <a
-            href="https://www.ganttlab.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            @click="goToReadMore"
-          >
+          <a href="https://www.ganttlab.org" target="_blank" rel="noopener" @click="goToReadMore">
             Read more
             <Icon size="14" class="mb-1" name="open-outline" />
           </a>
@@ -180,7 +175,7 @@
           <a
             href="https://clorichel.com/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             @click="goToAuthor"
           >Pierre-Alexandre Clorichel</a>
         </p>
