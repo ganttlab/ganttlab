@@ -11,7 +11,11 @@ export function getTaskFromGitLabIssue(gitlabIssue: GitLabIssue): Task {
   const task = new Task(
     gitlabIssue.title,
     gitlabIssue.web_url,
-    startDate ? startDate : new Date(gitlabIssue.created_at),
+    startDate
+      ? startDate
+      : gitlabIssue.milestone && gitlabIssue.milestone.start_date
+      ? new Date(gitlabIssue.milestone.start_date)
+      : new Date(gitlabIssue.created_at),
     dueDate
       ? dueDate
       : gitlabIssue.due_date
