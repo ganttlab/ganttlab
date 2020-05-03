@@ -6,7 +6,6 @@
           <Icon class="text-gray-400" size="30" name="logo-ganttlab" />
           <h1 class="text-gray-800 text-2xl leading-none font-lead ml-2">GanttLab</h1>
         </div>
-        <!-- <div class="w-64 text-black text-2xl leading-none font-lead">GanttLab</div> -->
         <div class="flex-grow flex items-center justify-center">
           <a
             class="flex items-center"

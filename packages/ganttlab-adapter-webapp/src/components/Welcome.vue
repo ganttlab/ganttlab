@@ -107,7 +107,6 @@
           <Icon class="text-gray-500 mr-2" size="56" name="logo-ganttlab" />
           <h1 class="text-4xl font-lead leading-none">GanttLab</h1>
         </div>
-        <!-- <h1 class="text-center text-4xl font-lead leading-none">GanttLab</h1> -->
       </div>
       <div class="flex-grow p-2 mt-6">
         <Steps3 class="w-full" :current="currentStep" @set-step="forceStep($event)">
