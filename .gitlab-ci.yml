@@ -2,7 +2,7 @@ stages:
   - build
   - deploy
 
-.stage_image_cache_beforeScript_artifacts_only_webapp: &stage_image_cache_beforeScript_artifacts_only_webapp
+.stage_image_cache_beforeScript_artifacts_webapp: &stage_image_cache_beforeScript_artifacts_webapp
   stage: build
   image: node:12
   cache:
@@ -14,17 +14,17 @@ stages:
   artifacts:
     paths:
       - packages/ganttlab-adapter-webapp/dist
+
+webapp:gtm:
+  <<: *stage_image_cache_beforeScript_artifacts_webapp
+  script:
+    - export VUE_APP_GTM_CONTAINER_ID="${GTM_CONTAINER_ID}"
+    - yarn run build:webapp
   only:
     - master
 
 webapp:
-  <<: *stage_image_cache_beforeScript_artifacts_only_webapp
-  script:
-    - export VUE_APP_GTM_CONTAINER_ID="${GTM_CONTAINER_ID}"
-    - yarn run build:webapp
-
-webapp:docker:
-  <<: *stage_image_cache_beforeScript_artifacts_only_webapp
+  <<: *stage_image_cache_beforeScript_artifacts_webapp
   script:
     - yarn run build:webapp
 
@@ -49,7 +49,7 @@ AWS:
     name: amazon/aws-cli
     entrypoint: ["/bin/bash", "-l", "-c"]
   dependencies:
-    - webapp
+    - webapp:gtm
   script:
     # setting up variable driving names
     - THE_ENVIRONMENT=$(if [ "$CI_COMMIT_REF_NAME" == "master" ]; then echo "production"; fi)
@@ -73,7 +73,7 @@ DockerHub:
   stage: deploy
   image: docker:git
   dependencies:
-    - webapp:docker
+    - webapp
   services:
     - docker:dind
   variables:
