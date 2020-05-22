@@ -10,7 +10,7 @@ By submitting code, hence agreeing to one of those Contributor License Agreement
 
 ## Security vulnerability disclosure
 
-Whether you supect security vulnerabilities, please **do NOT** create publicly viewable issues, but report privately to contact@ganttlab.org. You are not allowed to search for vulnerabilities on GanttLab Live. GanttLab source code is publicly available, you are free to install it on-premise and check for vulnerabilities on your instance.
+Whether you supect security vulnerabilities, please **do NOT** create publicly viewable issues, but report privately to contact@ganttlab.com. You are not allowed to search for vulnerabilities on GanttLab Live. GanttLab source code is publicly available, you are free to install it on-premise and check for vulnerabilities on your instance.
 
 ## Contributor Covenant Code of Conduct
 
@@ -50,7 +50,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ### Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at contact@ganttlab.org. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at contact@ganttlab.com. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 

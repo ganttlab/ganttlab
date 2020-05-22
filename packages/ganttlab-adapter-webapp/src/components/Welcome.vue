@@ -18,7 +18,7 @@
           <p class="w-full pt-1 text-sm text-center text-gray-600">
             By using this service you accept our
             <a
-              href="https://www.ganttlab.org/privacy/"
+              href="https://www.ganttlab.com/privacy/"
               target="_blank"
               rel="noopener"
               @click="goToPrivacy"
@@ -28,7 +28,7 @@
             <div class="w-2/3">
               <p>
                 <a
-                  href="https://www.ganttlab.org"
+                  href="https://www.ganttlab.com"
                   target="_blank"
                   rel="noopener"
                   @click="goToReadMore"
@@ -140,14 +140,14 @@
         <p class="w-full mb-6 text-sm text-center">
           By using this service you accept our
           <a
-            href="https://www.ganttlab.org/privacy/"
+            href="https://www.ganttlab.com/privacy/"
             target="_blank"
             rel="noopener"
             @click="goToPrivacy"
           >Privacy Policy</a>
         </p>
         <div class="flex items-center justify-between text-sm mb-6 px-4">
-          <a href="https://www.ganttlab.org" target="_blank" rel="noopener" @click="goToReadMore">
+          <a href="https://www.ganttlab.com" target="_blank" rel="noopener" @click="goToReadMore">
             Read more
             <Icon size="14" class="mb-1" name="open-outline" />
           </a>

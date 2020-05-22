@@ -5,12 +5,12 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters:
   DomainName:
     Type: String
-    Default: app.ganttlab.org
+    Default: app.ganttlab.com
     Description: The domain name to use to serve this project.
 
   ZoneName:
     Type: String
-    Default: ganttlab.org
+    Default: ganttlab.com
     Description: The hosted zone name coming along with the DomainName used.
 
 

@@ -6,14 +6,14 @@ The easy to use, fully functional Gantt chart for GitLab and GitHub.
 
 ## Use it now!
 
-Simply head to https://app.ganttlab.org and pick your data source.
+Simply head to https://app.ganttlab.com and pick your data source.
 
 - **GitLab** user? Type-in your GitLab instance URL (defaults to https://gitlab.com), a [Personal Access Token](https://gitlab.com/profile/personal_access_tokens) with the `api` scope and enjoy!
 - working with **GitHub**? Provide one of your GitHub user [Personal access tokens](https://github.com/settings/tokens) with the `repo` scope to get in!
 
 **Safe to run:** GanttLab does NOT store any of your data on a server, and runs on YOUR browser only. It uses your own network, as if you were sending all the requests to your GitLab instance or to GitHub right from your local computer. Unsure of it? Have a look at [the source code](https://gitlab.com/ganttlab/ganttlab/tree/master).
 
-**PRO tip:** if you are running an unsecured HTTP instance of GitLab, head to http://app.ganttlab.org to avoid your browser blocking the request coming from an HTTPS secured site.
+**PRO tip:** if you are running an unsecured HTTP instance of GitLab, head to http://app.ganttlab.com to avoid your browser blocking the request coming from an HTTPS secured site.
 
 > Interested in running GanttLab yourself? Head to the [Download and Install](docs/download-and-install.md) documentation.
 

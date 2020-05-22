@@ -43,7 +43,7 @@ sonarcloud:
   script:
     - sonar-scanner
 
-AWS:
+.stage_image_dependencies_script_only_aws: &stage_image_dependencies_script_only_aws
   stage: deploy
   image:
     name: amazon/aws-cli
@@ -51,23 +51,39 @@ AWS:
   dependencies:
     - webapp:gtm
   script:
-    # setting up variable driving names
-    - THE_ENVIRONMENT=$(if [ "$CI_COMMIT_REF_NAME" == "master" ]; then echo "production"; fi)
-    - THE_STACK_NAME="app-dot-ganttlab-dot-org-${THE_ENVIRONMENT}"
     - THE_S3_BUCKET="${THE_STACK_NAME}"
     # create/update the deployment CloudFormation stack
-    - aws cloudformation deploy --stack-name ${THE_STACK_NAME} --template-file devops/deploy/AWS/CloudFormation/stack.yaml --tags billing-project=app-dot-ganttlab-dot-org
+    - aws cloudformation deploy --stack-name ${THE_STACK_NAME} --template-file devops/deploy/AWS/CloudFormation/stack.yaml --tags billing-project=${BILLING_PROJECT} --parameter-overrides DomainName=${DOMAIN_NAME} ZoneName=${ZONE_NAME}
     - aws cloudformation update-termination-protection --enable-termination-protection --stack-name ${THE_STACK_NAME}
     # sync (with deletion) the built website from the artifacts of former pipeline stage right into the S3 bucket
     - aws s3 sync packages/ganttlab-adapter-webapp/dist/ "s3://${THE_S3_BUCKET}" --delete
     # invalidate /index.html from CloudFront for users to get the latest version straight away
     - CLOUDFRONT_DISTRIBUTION_ID=$(aws cloudformation describe-stack-resource --stack-name ${THE_STACK_NAME} --logical-resource-id CloudFrontDistribution | grep PhysicalResourceId | cut -d \" -f4)
     - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths /index.html
+  only:
+    - master
+
+AWS-dot-org:
+  <<: *stage_image_dependencies_script_only_aws
+  variables:
+    THE_STACK_NAME: "app-dot-ganttlab-dot-org-production"
+    BILLING_PROJECT: "app-dot-ganttlab-dot-org"
+    DOMAIN_NAME: "app.ganttlab.org"
+    ZONE_NAME: "ganttlab.org"
   environment:
     name: app.ganttlab.org
     url: https://app.ganttlab.org/
-  only:
-    - master
+
+AWS-dot-com:
+  <<: *stage_image_dependencies_script_only_aws
+  variables:
+    THE_STACK_NAME: "app-dot-ganttlab-dot-com-production"
+    BILLING_PROJECT: "app-dot-ganttlab-dot-com"
+    DOMAIN_NAME: "app.ganttlab.com"
+    ZONE_NAME: "ganttlab.com"
+  environment:
+    name: app.ganttlab.com
+    url: https://app.ganttlab.com/
 
 DockerHub:
   stage: deploy

@@ -10,7 +10,7 @@ docker run -p 8282:80 ganttlab/ganttlab
 
 Enjoy it on http://localhost:8282.
 
-The official GanttLab Docker image comes with the default configuration, as you can experience on https://app.ganttlab.org. If you want to customize configuration through environment variables, you'll need to build your own version of GanttLab, and then create your Docker image with that version you built. Keep reading!
+The official GanttLab Docker image comes with the default configuration, as you can experience on https://app.ganttlab.com. If you want to customize configuration through environment variables, you'll need to build your own version of GanttLab, and then create your Docker image with that version you built. Keep reading!
 
 ## Serve and build
 

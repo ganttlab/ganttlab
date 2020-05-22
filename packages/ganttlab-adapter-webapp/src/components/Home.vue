@@ -4,7 +4,7 @@
       <div class="flex items-center text-gray-600">
         <a
           class="w-64 flex justify-start items-center"
-          href="https://www.ganttlab.org/"
+          href="https://www.ganttlab.com/"
           target="_blank"
           rel="noopener"
           @click="goToWebsite"
