@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-adapter-webapp@0.2.0...ganttlab-adapter-webapp@0.2.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* **ganttlab-adapter-webapp:** adjust GitLab Personal Access Token link ([09ed086](https://gitlab.com/ganttlab/ganttlab/commit/09ed086acce6484d5b035008867d8981a697e91c))
+
+
+
+
+
 # [0.2.0](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-adapter-webapp@0.1.0...ganttlab-adapter-webapp@0.2.0) (2020-05-03)
 
 
