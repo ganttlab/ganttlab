@@ -57,7 +57,7 @@ export default class Login extends Mixins(LoginMixin) {
       return `${this.credentials.instance.replace(
         /\/$/,
         '',
-      )}/profile/personal_access_tokens`;
+      )}/-/profile/personal_access_tokens`;
     }
     return null;
   }
