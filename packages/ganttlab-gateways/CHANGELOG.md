@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-gateways@0.2.0...ganttlab-gateways@0.2.1) (2021-10-23)
+
+**Note:** Version bump only for package ganttlab-gateways
+
+
+
+
+
 # [0.2.0](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-gateways@0.1.0...ganttlab-gateways@0.2.0) (2020-05-03)
 
 

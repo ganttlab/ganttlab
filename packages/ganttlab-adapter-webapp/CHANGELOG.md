@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-adapter-webapp@0.2.1...ganttlab-adapter-webapp@0.2.2) (2021-10-23)
+
+**Note:** Version bump only for package ganttlab-adapter-webapp
+
+
+
+
+
 ## [0.2.1](https://gitlab.com/ganttlab/ganttlab/compare/ganttlab-adapter-webapp@0.2.0...ganttlab-adapter-webapp@0.2.1) (2021-10-22)
 
 
