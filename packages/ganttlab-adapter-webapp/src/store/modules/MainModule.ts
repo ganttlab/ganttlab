@@ -7,7 +7,7 @@ import {
   AuthenticatableSource,
   SourceVisitor,
 } from 'ganttlab-entities';
-import { DisplayableError } from '@/helpers/DisplayableError';
+import { DisplayableError } from '../../helpers/DisplayableError';
 
 @Module({
   dynamic: true,

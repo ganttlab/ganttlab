@@ -10,7 +10,7 @@ interface Variables {
   [key: string]: any;
 }
 
-const containerId: string | null = process.env.VUE_APP_GTM_CONTAINER_ID;
+const containerId: string | undefined = process.env.VUE_APP_GTM_CONTAINER_ID;
 const debug: boolean = process.env.VUE_APP_GTM_DEBUG ? true : false;
 
 const hasScriptInDocument = () => {
