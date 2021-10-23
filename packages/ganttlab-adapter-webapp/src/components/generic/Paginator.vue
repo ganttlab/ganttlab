@@ -1,9 +1,17 @@
 <template>
-  <div v-if="previousPage || nextPage" class="flex items-center justify-end text-sm">
+  <div
+    v-if="previousPage || nextPage"
+    class="flex items-center justify-end text-sm"
+  >
     <a v-if="currentPage > 2" href="#" class="mr-1" @click.prevent="setPage(1)">
       <Icon size="18" name="play-skip-back-circle-outline" />
     </a>
-    <a v-if="previousPage" href="#" class="mr-5" @click.prevent="setPage(previousPage)">
+    <a
+      v-if="previousPage"
+      href="#"
+      class="mr-5"
+      @click.prevent="setPage(previousPage)"
+    >
       <Icon size="18" name="caret-back-circle-outline" />
     </a>
     <div v-if="currentPage" class="cursor-default">Page {{ currentPage }}</div>

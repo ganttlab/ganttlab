@@ -10,7 +10,11 @@
           <Spinner size="64" />
         </div>
         <Home v-else-if="user" />
-        <Welcome v-else :justLoggedOut="justLoggedOut" class="w-full lg:m-auto lg:w-auto" />
+        <Welcome
+          v-else
+          :justLoggedOut="justLoggedOut"
+          class="w-full lg:m-auto lg:w-auto"
+        />
       </transition>
       <Toaster />
     </div>

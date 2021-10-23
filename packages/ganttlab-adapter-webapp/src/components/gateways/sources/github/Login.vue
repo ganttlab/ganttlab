@@ -11,7 +11,8 @@
             href="https://github.com/settings/tokens"
             target="_blank"
             rel="noopener noreferrer"
-          >Personal Access Token</a>
+            >Personal Access Token</a
+          >
           with the
           <span class="font-normal text-lead-800">repo</span> scope
         </p>

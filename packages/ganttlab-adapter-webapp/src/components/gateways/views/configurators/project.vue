@@ -8,7 +8,9 @@
       @search="searchProjects"
       @select-result="setProject"
     >
-      <p slot="label">Search for a project directly, or in a group with a trailing slash</p>
+      <p slot="label">
+        Search for a project directly, or in a group with a trailing slash
+      </p>
       <template v-slot:no-result="slotProps">
         <p>No project found while searching for</p>
         <p>
@@ -24,7 +26,8 @@
               projects = null;
               search = 'ganttlab';
             "
-          >ganttlab</a>
+            >ganttlab</a
+          >
           »
           <br />or directly in the «
           <a
@@ -34,7 +37,8 @@
               projects = null;
               search = 'ganttlab/';
             "
-          >ganttlab/</a>
+            >ganttlab/</a
+          >
           » group
         </p>
       </template>
@@ -46,11 +50,16 @@
             :alt="slotProps.result.path_with_namespace"
             class="flex-shrink-0 w-12 h-12 mr-3 rounded bg-white shadow"
           />
-          <div v-else class="flex-shrink-0 w-12 h-12 p-2 mr-3 rounded bg-gray-200 text-gray-600">
+          <div
+            v-else
+            class="flex-shrink-0 w-12 h-12 p-2 mr-3 rounded bg-gray-200 text-gray-600"
+          >
             <Icon size="32" name="cube-outline" />
           </div>
           <p class="flex-shrink truncate">
-            <span class="font-bold">{{ slotProps.result.path_with_namespace }}</span>
+            <span class="font-bold">{{
+              slotProps.result.path_with_namespace
+            }}</span>
             <br />
             <span class="text-sm">{{ slotProps.result.description }}</span>
           </p>
@@ -66,7 +75,8 @@
           projects = null;
           search = 'ganttlab';
         "
-      >ganttlab</a>
+        >ganttlab</a
+      >
       » to find any
       <br />project with that name, or «
       <a
@@ -76,7 +86,8 @@
           projects = null;
           search = 'ganttlab/';
         "
-      >ganttlab/</a>
+        >ganttlab/</a
+      >
       » with a
       <br />trailing slash to find projects in the ganttlab group
     </p>

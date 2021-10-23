@@ -10,20 +10,20 @@ import moment from 'moment-timezone';
 import { getConvertedTasks } from '.';
 
 export default {
-  data: function() {
+  data: function () {
     return {
       convertedTasks: [],
     };
   },
   props: ['tasks'],
   watch: {
-    tasks: function(value) {
+    tasks: function (value) {
       if (value && value.length) this.refreshChart();
     },
   },
   methods: {
     // thank you Florian Roscheck for this, you made an awesome work I only needed to tweak a little
-    visavailChart: function() {
+    visavailChart: function () {
       // define chart layout
       const margin = {
         // top margin includes title and legend
@@ -134,8 +134,8 @@ export default {
           if (isDateOnlyFormat === null) {
             isDateOnlyFormat = true;
           }
-          dataset.forEach(function(d) {
-            d.data.forEach(function(d1) {
+          dataset.forEach(function (d) {
+            d.data.forEach(function (d1) {
               if (!(d1[0] instanceof Date)) {
                 if (parseDateRegEx.test(d1[0])) {
                   // d1[0] is date without time data
@@ -172,10 +172,10 @@ export default {
           });
 
           // cluster data by dates to form time blocks
-          dataset.forEach(function(series, seriesI) {
+          dataset.forEach(function (series, seriesI) {
             const tmpData = [];
             const dataLength = series.data.length;
-            series.data.forEach(function(d, i) {
+            series.data.forEach(function (d, i) {
               if (i !== 0 && i < dataLength) {
                 if (d[1] === tmpData[tmpData.length - 1][1]) {
                   // the value has not changed since the last date
@@ -215,7 +215,7 @@ export default {
           let startDate = 0;
           let endDate = 0;
 
-          dataset.forEach(function(series, seriesI) {
+          dataset.forEach(function (series) {
             if (series.dispData.length > 0) {
               if (startDate === 0) {
                 startDate = series.dispData[0][0];
@@ -239,10 +239,7 @@ export default {
             .clamp(1);
 
           // define axes
-          const xAxis = d3.svg
-            .axis()
-            .scale(xScale)
-            .orient('top');
+          const xAxis = d3.svg.axis().scale(xScale).orient('top');
 
           // create SVG element
           const svg = d3
@@ -268,17 +265,17 @@ export default {
             .data(dataset.slice(startSet, endSet))
             .enter()
             .append('a')
-            .attr('xlink:href', function(d) {
+            .attr('xlink:href', function (d) {
               return d.link;
             })
             .attr('xlink:show', 'new')
             .append('text')
             .attr('x', paddingLeft)
             .attr('y', lineSpacing + dataHeight / 2)
-            .text(function(d) {
+            .text(function (d) {
               return d.title;
             })
-            .attr('transform', function(d, i) {
+            .attr('transform', function (d, i) {
               return 'translate(0,' + (lineSpacing + dataHeight) * i + ')';
             })
             .attr('class', 'ytitle');
@@ -292,10 +289,10 @@ export default {
             .append('line')
             .attr({
               class: 'vert_grid',
-              x1: function(d) {
+              x1: function (d) {
                 return xScale(d);
               },
-              x2: function(d) {
+              x2: function (d) {
                 return xScale(d);
               },
               y1: 0,
@@ -323,20 +320,16 @@ export default {
               class: 'horz_grid',
               x1: 0,
               x2: width,
-              y1: function(d, i) {
+              y1: function (d, i) {
                 return getHGridY(i);
               },
-              y2: function(d, i) {
+              y2: function (d, i) {
                 return getHGridY(i);
               },
             });
 
           // create x axis
-          svg
-            .select('#g_axis')
-            .append('g')
-            .attr('class', 'axis')
-            .call(xAxis);
+          svg.select('#g_axis').append('g').attr('class', 'axis').call(xAxis);
 
           // make y groups for different data series
           const g = svg
@@ -345,48 +338,45 @@ export default {
             .data(dataset.slice(startSet, endSet))
             .enter()
             .append('a')
-            .attr('xlink:href', function(d) {
+            .attr('xlink:href', function (d) {
               return d.link;
             })
             .attr('xlink:show', 'new')
             .append('g')
-            .attr('transform', function(d, i) {
+            .attr('transform', function (d, i) {
               return 'translate(0,' + (lineSpacing + dataHeight) * i + ')';
             })
             .attr('class', 'dataset');
 
           // add data series
           g.selectAll('rect')
-            .data(function(d) {
+            .data(function (d) {
               return d.dispData;
             })
             .enter()
             .append('rect')
-            .attr('x', function(d) {
+            .attr('x', function (d) {
               return xScale(d[0]);
             })
             .attr('y', lineSpacing)
-            .attr('width', function(d) {
+            .attr('width', function (d) {
               return xScale(d[2]) - xScale(d[0]);
             })
             .attr('height', dataHeight)
-            .attr('class', function(d) {
+            .attr('class', function (d) {
               if (d[1] === 1) {
                 return 'rect_has_data';
               }
               return 'rect_has_no_data';
             })
-            .on('mouseover', function(d, i) {
+            .on('mouseover', function (d) {
               const matrix = this.getScreenCTM().translate(
                 +this.getAttribute('x'),
                 +this.getAttribute('y'),
               );
+              div.transition().duration(200).style('opacity', 0.9);
               div
-                .transition()
-                .duration(200)
-                .style('opacity', 0.9);
-              div
-                .html(function() {
+                .html(function () {
                   let output = '';
                   if (d[1] === 1) {
                     output =
@@ -426,19 +416,16 @@ export default {
                   }
                   return output;
                 })
-                .style('left', function() {
+                .style('left', function () {
                   return window.pageXOffset + matrix.e + 'px';
                 })
-                .style('top', function() {
+                .style('top', function () {
                   return window.pageYOffset + matrix.f - 11 + 'px';
                 })
                 .style('height', dataHeight + 11 + 'px');
             })
-            .on('mouseout', function() {
-              div
-                .transition()
-                .duration(500)
-                .style('opacity', 0);
+            .on('mouseout', function () {
+              div.transition().duration(500).style('opacity', 0);
             });
 
           // rework ticks and grid for better visual structure
@@ -457,21 +444,21 @@ export default {
           // ensure year emphasis is only active if years are the biggest clustering unit
           if (
             emphasizeYearTicks &&
-            !isYearTick.every(function(d) {
+            !isYearTick.every(function (d) {
               return d === true;
             }) &&
-            isMonthTick.every(function(d) {
+            isMonthTick.every(function (d) {
               return d === true;
             })
           ) {
-            d3.selectAll('g.tick').each(function(d, i) {
+            d3.selectAll('g.tick').each(function (d, i) {
               if (isYearTick[i]) {
                 d3.select(this).attr({
                   class: 'x_tick_emph',
                 });
               }
             });
-            d3.selectAll('.vert_grid').each(function(d, i) {
+            d3.selectAll('.vert_grid').each(function (d, i) {
               if (isYearTick[i]) {
                 d3.select(this).attr({
                   class: 'vert_grid_emph',
@@ -484,7 +471,7 @@ export default {
           const todayDate = new Date();
           let emphasizedToday = false;
           todayDate.setHours(0, 0, 0, 0);
-          d3.selectAll('g.tick').each(function(d, i) {
+          d3.selectAll('g.tick').each(function (d) {
             if (d.getTime() === todayDate.getTime()) {
               // tick exists for today, emphasizing it
               d3.select(this).attr({
@@ -492,7 +479,7 @@ export default {
               });
             }
           });
-          d3.selectAll('.vert_grid').each(function(d, i) {
+          d3.selectAll('.vert_grid').each(function (d) {
             if (d.getTime() === todayDate.getTime()) {
               // vertical line exists in the grid for today, emphasizing it
               d3.select(this).attr({
@@ -607,31 +594,31 @@ export default {
         });
       }
 
-      chart.width = function(_) {
+      chart.width = function (_) {
         if (!arguments.length) return width;
         width = _;
         return chart;
       };
 
-      chart.drawTitle = function(_) {
+      chart.drawTitle = function (_) {
         if (!arguments.length) return drawTitle;
         drawTitle = _;
         return chart;
       };
 
-      chart.maxDisplayDatasets = function(_) {
+      chart.maxDisplayDatasets = function (_) {
         if (!arguments.length) return maxDisplayDatasets;
         maxDisplayDatasets = _;
         return chart;
       };
 
-      chart.curDisplayFirstDataset = function(_) {
+      chart.curDisplayFirstDataset = function (_) {
         if (!arguments.length) return curDisplayFirstDataset;
         curDisplayFirstDataset = _;
         return chart;
       };
 
-      chart.emphasizeYearTicks = function(_) {
+      chart.emphasizeYearTicks = function (_) {
         if (!arguments.length) return emphasizeYearTicks;
         emphasizeYearTicks = _;
         return chart;
@@ -639,7 +626,7 @@ export default {
 
       return chart;
     },
-    refreshChart: function() {
+    refreshChart: function () {
       this.convertedTasks = getConvertedTasks(this.tasks);
 
       // removing all created taskTooltips to avoid useless scrolling
@@ -650,11 +637,9 @@ export default {
 
       const chart = this.visavailChart().width(document.body.clientWidth - 290);
 
-      d3.select('#legacyChart')
-        .datum(this.convertedTasks)
-        .call(chart);
+      d3.select('#legacyChart').datum(this.convertedTasks).call(chart);
     },
-    pad: function(number) {
+    pad: function (number) {
       let r = String(number);
       if (r.length === 1) {
         r = '0' + r;
@@ -662,7 +647,7 @@ export default {
       return r;
     },
   },
-  mounted: function() {
+  mounted: function () {
     // refresh the gantt graph
     if (this.tasks && this.tasks.length) this.refreshChart();
   },

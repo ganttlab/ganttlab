@@ -11,14 +11,16 @@
           target="_blank"
           rel="noopener noreferrer"
           class="border-dotted border-b border-gray-600 hover:border-lead-700"
-        >your project</a>
+          >your project</a
+        >
         <a
           v-else
           :href="sourceUrl"
           target="_blank"
           rel="noopener noreferrer"
           class="border-dotted border-b border-gray-600 hover:border-lead-700"
-        >your source</a>, or pick another view
+          >your source</a
+        >, or pick another view
       </p>
     </div>
   </div>

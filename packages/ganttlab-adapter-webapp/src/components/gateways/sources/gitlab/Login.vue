@@ -12,11 +12,9 @@
       <GenericInput type="password" v-model="credentials.token">
         <p slot="label">
           A
-          <a
-            :href="personalTokenLink"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Personal Access Token</a>
+          <a :href="personalTokenLink" target="_blank" rel="noopener noreferrer"
+            >Personal Access Token</a
+          >
           with the
           <span class="font-normal text-lead-800">api</span> scope only
         </p>

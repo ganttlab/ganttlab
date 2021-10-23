@@ -8,13 +8,21 @@
         class="px-6 py-3 border-b border-gray-200 text-gray-400"
         :class="{ active: activeMilestone === i }"
         @click.prevent="setActiveMilestone(i)"
-      >{{ milestone.name }}</a>
+        >{{ milestone.name }}</a
+      >
     </div>
     <div v-if="paginatedTasks && paginatedTasks.list.length">
-      <TasksDisplay :paginatedTasks="paginatedTasks" @set-tasks-page="setTasksPage($event)" />
+      <TasksDisplay
+        :paginatedTasks="paginatedTasks"
+        @set-tasks-page="setTasksPage($event)"
+      />
     </div>
     <div v-else class="w-full p-16">
-      <NoData :project="project" :sourceUrl="sourceUrl" :viewGateway="viewGateway" />
+      <NoData
+        :project="project"
+        :sourceUrl="sourceUrl"
+        :viewGateway="viewGateway"
+      />
     </div>
   </div>
 </template>

@@ -22,7 +22,9 @@
                 </div>
                 <div class="w-56">
                   <p class="text-lg">{{ view.instance.name }}</p>
-                  <p class="text-sm text-lead-200">{{ view.instance.shortDescription }}</p>
+                  <p class="text-sm text-lead-200">
+                    {{ view.instance.shortDescription }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -32,11 +34,13 @@
               <div class="flex-none w-64 bg-gray-100 px-4 py-8">
                 <div class="flex items-center">
                   <Icon size="18" :name="selectedViewToConfigure.icon" />
-                  <p class="ml-2 text-lg leading-none">{{ selectedViewToConfigure.instance.name }}</p>
+                  <p class="ml-2 text-lg leading-none">
+                    {{ selectedViewToConfigure.instance.name }}
+                  </p>
                 </div>
-                <p
-                  class="mt-1 text-sm text-gray-600"
-                >{{ selectedViewToConfigure.instance.shortDescription }}</p>
+                <p class="mt-1 text-sm text-gray-600">
+                  {{ selectedViewToConfigure.instance.shortDescription }}
+                </p>
               </div>
               <div class="flex-grow p-8">
                 <component

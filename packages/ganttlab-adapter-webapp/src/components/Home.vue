@@ -10,7 +10,9 @@
           @click="goToWebsite"
         >
           <Icon class="text-gray-400" size="30" name="logo-ganttlab" />
-          <h1 class="text-gray-800 text-2xl leading-none font-lead ml-2">GanttLab</h1>
+          <h1 class="text-gray-800 text-2xl leading-none font-lead ml-2">
+            GanttLab
+          </h1>
         </a>
 
         <div class="flex-grow flex items-center justify-center">
@@ -40,7 +42,10 @@
               :alt="project.path"
               class="flex-shrink-0 w-6 h-6 mr-2 rounded bg-white shadow"
             />
-            <div v-else class="flex-shrink-0 w-6 h-6 px-1 mr-2 rounded bg-gray-300 text-gray-500">
+            <div
+              v-else
+              class="flex-shrink-0 w-6 h-6 px-1 mr-2 rounded bg-gray-300 text-gray-500"
+            >
               <Icon size="16" name="cube-outline" />
             </div>
             <p>{{ project.path }}</p>
@@ -90,7 +95,10 @@
         >
           <div class="h-full w-48 p-3">
             <p class="pb-2 text-xs tracking-wider text-lead-300">VIEW</p>
-            <ViewSelector :sourceGateway="sourceGateway" @set-view="setView($event)" />
+            <ViewSelector
+              :sourceGateway="sourceGateway"
+              @set-view="setView($event)"
+            />
           </div>
           <div class="h-full w-48 p-3 border-l border-lead-500">
             <p class="pb-2 text-xs tracking-wider text-lead-300">SORT</p>
@@ -136,10 +144,17 @@
           />
         </div>
         <div v-else-if="paginatedTasks && paginatedTasks.list.length">
-          <TasksDisplay :paginatedTasks="paginatedTasks" @set-tasks-page="setTasksPage($event)" />
+          <TasksDisplay
+            :paginatedTasks="paginatedTasks"
+            @set-tasks-page="setTasksPage($event)"
+          />
         </div>
         <div v-else class="w-full p-16">
-          <NoData :project="project" :sourceUrl="sourceUrl" :viewGateway="viewGateway" />
+          <NoData
+            :project="project"
+            :sourceUrl="sourceUrl"
+            :viewGateway="viewGateway"
+          />
         </div>
       </transition>
     </div>
@@ -244,7 +259,7 @@ export default class Home extends Vue {
 
   get sourceLogoIcon(): string | null {
     if (mainState.sourceGateway) {
-      const gatewayDetails = ImplementedSourcesGateways.find(gateway => {
+      const gatewayDetails = ImplementedSourcesGateways.find((gateway) => {
         if (mainState.sourceGateway) {
           return gateway.slug === mainState.sourceGateway.slug;
         }

@@ -24,7 +24,8 @@
               repositories = null;
               search = 'ganttlab';
             "
-          >ganttlab</a>
+            >ganttlab</a
+          >
           »
         </p>
       </template>
@@ -36,7 +37,10 @@
             :alt="slotProps.result.full_name"
             class="flex-shrink-0 w-12 h-12 mr-3 rounded bg-white shadow"
           />
-          <div v-else class="flex-shrink-0 w-12 h-12 p-2 mr-3 rounded bg-gray-200 text-gray-600">
+          <div
+            v-else
+            class="flex-shrink-0 w-12 h-12 p-2 mr-3 rounded bg-gray-200 text-gray-600"
+          >
             <Icon size="32" name="cube-outline" />
           </div>
           <p class="flex-shrink truncate">

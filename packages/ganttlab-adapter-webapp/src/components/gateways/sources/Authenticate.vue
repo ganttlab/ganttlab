@@ -16,7 +16,12 @@
           @source-gateway="setSourceGateway($event)"
         />
         <div class="flex items-center">
-          <a href="#" @click.prevent="setStep(1)" class="flex-grow text-sm text-gray-500">&lt; Back</a>
+          <a
+            href="#"
+            @click.prevent="setStep(1)"
+            class="flex-grow text-sm text-gray-500"
+            >&lt; Back</a
+          >
           <div class="mr-8">
             <GenericCheckbox v-model="remember">
               <p slot="label">Remember me</p>

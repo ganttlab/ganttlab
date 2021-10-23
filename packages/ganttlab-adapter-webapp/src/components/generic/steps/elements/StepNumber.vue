@@ -2,7 +2,8 @@
   <span
     class="transition duration-500 ease-in m-auto rounded-full h-5 w-5 flex items-center justify-center text-gray-500 bg-gray-200"
     :class="{ active: isActive, done: isDone }"
-  >{{ number }}</span>
+    >{{ number }}</span
+  >
 </template>
 
 <script lang="ts">

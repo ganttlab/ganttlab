@@ -37,9 +37,30 @@
         gradientTransform="rotate(-12.11 545.06601843 460.65071643)"
         xlink:href="#a"
       />
-      <linearGradient id="d" x1="476.4" y1="710.53" x2="476.4" y2="127.12" xlink:href="#a" />
-      <linearGradient id="e" x1="476.94" y1="156.13" x2="476.94" y2="106.68" xlink:href="#a" />
-      <linearGradient id="f" x1="666.86" y1="176.39" x2="666.86" y2="117.95" xlink:href="#a" />
+      <linearGradient
+        id="d"
+        x1="476.4"
+        y1="710.53"
+        x2="476.4"
+        y2="127.12"
+        xlink:href="#a"
+      />
+      <linearGradient
+        id="e"
+        x1="476.94"
+        y1="156.13"
+        x2="476.94"
+        y2="106.68"
+        xlink:href="#a"
+      />
+      <linearGradient
+        id="f"
+        x1="666.86"
+        y1="176.39"
+        x2="666.86"
+        y2="117.95"
+        xlink:href="#a"
+      />
     </defs>
     <path
       fill="#D9E2EC"
@@ -74,7 +95,11 @@
       fill="#2bb0ed"
     />
     <path fill="#D9E2EC" d="M257.89 116.91h437.02v603.82H257.89z" />
-    <path fill="url(#d)" d="M265.28 127.12h422.25v583.41H265.28z" opacity=".5" />
+    <path
+      fill="url(#d)"
+      d="M265.28 127.12h422.25v583.41H265.28z"
+      opacity=".5"
+    />
     <path fill="#fff" d="M270.65 131.42h411.5v570.52h-411.5z" />
     <path fill="url(#e)" d="M374.87 106.68h204.14v49.45H374.87z" />
     <path

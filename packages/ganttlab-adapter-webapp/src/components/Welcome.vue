@@ -7,9 +7,9 @@
             <Icon class="text-gray-500 mr-2" size="70" name="logo-ganttlab" />
             <h1 class="text-5xl font-lead leading-none mt-2">GanttLab</h1>
           </div>
-          <h2
-            class="text-2xl font-lead"
-          >The easy to use, fully functional Gantt chart for GitLab and GitHub.</h2>
+          <h2 class="text-2xl font-lead">
+            The easy to use, fully functional Gantt chart for GitLab and GitHub.
+          </h2>
           <h3 class="pt-10 pb-16">
             Provide your teams with the right tool to master time and deadlines.
             Giving back credit to your project status and issues due dates has
@@ -22,7 +22,8 @@
               target="_blank"
               rel="noopener"
               @click="goToPrivacy"
-            >Privacy Policy</a>
+              >Privacy Policy</a
+            >
           </p>
           <div class="flex pt-4 text-sm text-gray-600">
             <div class="w-2/3">
@@ -44,7 +45,8 @@
                   target="_blank"
                   rel="noopener"
                   @click="goToAuthor"
-                >Pierre-Alexandre Clorichel</a>
+                  >Pierre-Alexandre Clorichel</a
+                >
               </p>
             </div>
             <div class="w-1/3 text-right">
@@ -76,7 +78,11 @@
         <div class="w-112 p-10 bg-white rounded-r-md">
           <div class="flex flex-wrap h-full content-end">
             <transition name="component-fade" mode="out-in">
-              <GatewaysList v-if="source === null" class="w-full" @set-source="setSource($event)" />
+              <GatewaysList
+                v-if="source === null"
+                class="w-full"
+                @set-source="setSource($event)"
+              />
               <SourceAuthenticate
                 v-else
                 class="w-full"
@@ -86,7 +92,11 @@
                 @set-step="forceStep($event)"
               />
             </transition>
-            <Steps3 class="w-full mt-8" :current="currentStep" @set-step="forceStep($event)">
+            <Steps3
+              class="w-full mt-8"
+              :current="currentStep"
+              @set-step="forceStep($event)"
+            >
               <p slot="step1">
                 Select your
                 <br />data source
@@ -109,7 +119,11 @@
         </div>
       </div>
       <div class="flex-grow p-2 mt-6">
-        <Steps3 class="w-full" :current="currentStep" @set-step="forceStep($event)">
+        <Steps3
+          class="w-full"
+          :current="currentStep"
+          @set-step="forceStep($event)"
+        >
           <p slot="step1">
             Select your
             <br />data source
@@ -144,10 +158,16 @@
             target="_blank"
             rel="noopener"
             @click="goToPrivacy"
-          >Privacy Policy</a>
+            >Privacy Policy</a
+          >
         </p>
         <div class="flex items-center justify-between text-sm mb-6 px-4">
-          <a href="https://www.ganttlab.com" target="_blank" rel="noopener" @click="goToReadMore">
+          <a
+            href="https://www.ganttlab.com"
+            target="_blank"
+            rel="noopener"
+            @click="goToReadMore"
+          >
             Read more
             <Icon size="14" class="mb-1" name="open-outline" />
           </a>
@@ -177,7 +197,8 @@
             target="_blank"
             rel="noopener"
             @click="goToAuthor"
-          >Pierre-Alexandre Clorichel</a>
+            >Pierre-Alexandre Clorichel</a
+          >
         </p>
       </div>
     </div>
