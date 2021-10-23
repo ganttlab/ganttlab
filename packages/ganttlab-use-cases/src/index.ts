@@ -22,11 +22,11 @@ export function markdownToTaskDetails(
   // reading lines from this task body to search for ganttStartString and ganttDueString
   if (markdown != null) {
     const lines = markdown.split('\n');
-    for (let j = 0; j < lines.length; j++) {
+    for (const currentLine of lines) {
       // this task body line starts with the ganttStartString
-      if (!lines[j].indexOf(ganttStringConfig.ganttStartString)) {
+      if (!currentLine.indexOf(ganttStringConfig.ganttStartString)) {
         const theDate = new Date(
-          lines[j].replace(ganttStringConfig.ganttStartString, '').trim(),
+          currentLine.replace(ganttStringConfig.ganttStartString, '').trim(),
         );
         if (theDate instanceof Date && !isNaN((theDate as unknown) as number)) {
           startDate = theDate;
@@ -34,9 +34,9 @@ export function markdownToTaskDetails(
       }
 
       // this task body line starts with the ganttDueString
-      if (!lines[j].indexOf(ganttStringConfig.ganttDueString)) {
+      if (!currentLine.indexOf(ganttStringConfig.ganttDueString)) {
         const theDate = new Date(
-          lines[j].replace(ganttStringConfig.ganttDueString, '').trim(),
+          currentLine.replace(ganttStringConfig.ganttDueString, '').trim(),
         );
         if (theDate instanceof Date && !isNaN((theDate as unknown) as number)) {
           dueDate = theDate;
