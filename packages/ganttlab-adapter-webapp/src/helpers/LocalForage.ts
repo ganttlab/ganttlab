@@ -9,7 +9,7 @@ export async function getRememberedCredentials(): Promise<{
   [key: string]: Credentials | null;
 } | null> {
   try {
-    const remember: boolean = await localForage.getItem('remember');
+    const remember = await localForage.getItem('remember');
     if (remember) {
       const credentialsBySource: {
         [key: string]: Credentials | null;
@@ -30,7 +30,7 @@ export async function getRememberedCredentialsBySource(
   source: string,
 ): Promise<Credentials | null> {
   try {
-    const remember: boolean = await localForage.getItem('remember');
+    const remember = await localForage.getItem('remember');
     if (remember) {
       const credentialsBySource: {
         [key: string]: Credentials | null;
@@ -49,9 +49,9 @@ export async function getRememberedCredentialsBySource(
 
 export async function getRememberedSource(): Promise<string | null> {
   try {
-    const remember: boolean = await localForage.getItem('remember');
+    const remember = await localForage.getItem('remember');
     if (remember) {
-      const source: string = await localForage.getItem('source');
+      const source: string | null = await localForage.getItem('source');
       return source;
     }
   } catch (error) {
@@ -68,7 +68,7 @@ export async function getRememberedViews(): Promise<{
   };
 } | null> {
   try {
-    const remember: boolean = await localForage.getItem('remember');
+    const remember = await localForage.getItem('remember');
     if (remember) {
       return await localForage.getItem('viewsBySource');
     }
@@ -86,7 +86,7 @@ export async function getRememberedViewsBySource(
   configuration: Configuration;
 } | null> {
   try {
-    const remember: boolean = await localForage.getItem('remember');
+    const remember = await localForage.getItem('remember');
     if (remember) {
       const viewsBySource: {
         [source: string]: {
