@@ -9,7 +9,8 @@
   "scripts": {
     "build:doc": "typedoc --readme none --mode file --excludeNotExported --exclude \"**/*+(index).ts\" --out ../../typedoc/ganttlab-entities",
     "build:lib": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
