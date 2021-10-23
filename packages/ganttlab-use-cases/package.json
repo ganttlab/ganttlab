@@ -15,6 +15,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "ganttlab-entities": "0.1.0"
+    "ganttlab-entities": "0.1.1"
   }
 }
