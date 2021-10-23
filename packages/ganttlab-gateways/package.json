@@ -9,7 +9,8 @@
   "scripts": {
     "build:lib": "tsc",
     "populate:demo": "ts-node-script src/sources/gitlab/DemoPopulator.ts",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@types/parse-link-header": "^1.0.0",
