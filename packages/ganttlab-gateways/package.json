@@ -18,7 +18,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "ganttlab-entities": "0.1.1",
     "ganttlab-use-cases": "0.1.1",
     "parse-link-header": "^1.0.1"
