@@ -14,9 +14,9 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "d3-v3": "npm:d3@^3.5.17",
-    "ganttlab-entities": "0.1.0",
-    "ganttlab-gateways": "0.2.0",
-    "ganttlab-use-cases": "0.1.0",
+    "ganttlab-entities": "0.1.1",
+    "ganttlab-gateways": "0.2.1",
+    "ganttlab-use-cases": "0.1.1",
     "localforage": "^1.7.3",
     "lodash": "^4.17.15",
     "moment-timezone": "^0.5.28",
