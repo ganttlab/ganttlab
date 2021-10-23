@@ -8,7 +8,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build:lib": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "typescript": "^3.8.3"
