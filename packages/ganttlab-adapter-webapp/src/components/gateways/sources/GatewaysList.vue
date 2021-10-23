@@ -24,7 +24,7 @@ import { ImplementedSourcesGateways } from '../../../helpers/ImplementedSourcesG
     Icon,
   },
 })
-export default class Gateways extends Vue {
+export default class GatewaysList extends Vue {
   gateways = ImplementedSourcesGateways;
 
   @Emit('set-source')

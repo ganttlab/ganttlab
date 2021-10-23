@@ -65,7 +65,7 @@ import { Project } from 'ganttlab-entities';
     Icon,
   },
 })
-export default class ViewRepositoryConfigurator extends Vue {
+export default class RepositoryViewConfigurator extends Vue {
   public search = '';
   public loading = false;
   public repositories: Array<GitHubRepository> | null = null;

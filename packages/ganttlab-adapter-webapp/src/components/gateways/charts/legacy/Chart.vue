@@ -109,8 +109,8 @@ export default {
           // check how data is arranged
           if (definedBlocks === null) {
             definedBlocks = 0;
-            for (let i = 0; i < dataset.length; i++) {
-              if (dataset[i].data[0].length === 3) {
+            for (const element of dataset) {
+              if (element.data[0].length === 3) {
                 definedBlocks = 1;
                 break;
               } else {
@@ -306,6 +306,12 @@ export default {
                 paddingBottom,
             });
 
+          const getHGridY = (i) => {
+            return (
+              (lineSpacing + dataHeight) * i + lineSpacing + dataHeight / 2
+            );
+          };
+
           // create horizontal grid
           svg
             .select('#g_axis')
@@ -318,14 +324,10 @@ export default {
               x1: 0,
               x2: width,
               y1: function(d, i) {
-                return (
-                  (lineSpacing + dataHeight) * i + lineSpacing + dataHeight / 2
-                );
+                return getHGridY(i);
               },
               y2: function(d, i) {
-                return (
-                  (lineSpacing + dataHeight) * i + lineSpacing + dataHeight / 2
-                );
+                return getHGridY(i);
               },
             });
 

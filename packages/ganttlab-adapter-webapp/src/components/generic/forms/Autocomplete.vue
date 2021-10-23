@@ -115,11 +115,9 @@ export default class Autocomplete extends Vue {
   }
 
   get targetLi(): HTMLElement {
-    const refs = this.$refs[`result-${this.selectedResultIndex}`] as Array<
+    return this.$refs[`result-${this.selectedResultIndex}`] as Array<
       HTMLElement
-    >;
-    const theRef = refs[0];
-    return theRef;
+    >[0];
   }
 
   onArrowDown() {

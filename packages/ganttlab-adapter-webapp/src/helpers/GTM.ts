@@ -19,14 +19,14 @@ const hasScriptInDocument = () => {
   );
 };
 
-const loadGtmScript = (containerId: string): void => {
+const loadGtmScript = (): void => {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     'gtm.start': new Date().getTime(),
     event: 'gtm.js',
   });
   const firstDocumentScript = document.getElementsByTagName('script')[0];
-  const gtmScript = document.createElement('script') as HTMLScriptElement;
+  const gtmScript = document.createElement('script');
   gtmScript.async = true;
   gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + containerId;
   if (firstDocumentScript.parentNode) {
@@ -34,15 +34,17 @@ const loadGtmScript = (containerId: string): void => {
   }
 };
 
+const doesUserAllowsTracking = (): boolean => {
+  const browserDnt = window.doNotTrack || navigator.doNotTrack;
+
+  if (!browserDnt) return true;
+  return browserDnt !== '1' ? true : false;
+};
+
 const gtmTrack = (eventName: string, variables: Variables) => {
   const hasScript = hasScriptInDocument();
   const hasScriptString = hasScript ? 'HasScript' : 'NoScript';
-  const browserDnt = window.doNotTrack || navigator.doNotTrack;
-  const userAllowsTracking = browserDnt
-    ? browserDnt !== '1'
-      ? true
-      : false
-    : true;
+  const userAllowsTracking = doesUserAllowsTracking();
   const allowString = userAllowsTracking ? 'AllowsTracking' : 'DoNotTrack';
   if (debug) {
     console.info(
@@ -55,7 +57,7 @@ const gtmTrack = (eventName: string, variables: Variables) => {
     return;
   }
   if (!hasScript) {
-    loadGtmScript(containerId);
+    loadGtmScript();
   }
 
   window.dataLayer.push({

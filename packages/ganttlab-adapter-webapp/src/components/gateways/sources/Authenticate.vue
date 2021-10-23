@@ -69,7 +69,7 @@ export default class Authenticate extends Vue {
 
   // adding convenient sign-in on Enter key
   windowKeyup(event: KeyboardEvent) {
-    if (event.keyCode == 13) {
+    if (event.key && event.key === 'Enter') {
       this.doSignIn();
     }
   }

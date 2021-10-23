@@ -76,7 +76,7 @@
         <div class="w-112 p-10 bg-white rounded-r-md">
           <div class="flex flex-wrap h-full content-end">
             <transition name="component-fade" mode="out-in">
-              <SourcesList v-if="source === null" class="w-full" @set-source="setSource($event)" />
+              <GatewaysList v-if="source === null" class="w-full" @set-source="setSource($event)" />
               <SourceAuthenticate
                 v-else
                 class="w-full"
@@ -121,7 +121,7 @@
           </p>
         </Steps3>
         <transition name="component-fade" mode="out-in">
-          <SourcesList
+          <GatewaysList
             v-if="source === null"
             class="w-full px-6 mt-20"
             @set-source="source = $event"
@@ -187,7 +187,7 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 import Icon from './generic/Icon.vue';
-import SourcesList from './gateways/sources/List.vue';
+import GatewaysList from './gateways/sources/GatewaysList.vue';
 import SourceAuthenticate from './gateways/sources/Authenticate.vue';
 import Steps3 from './generic/steps/Steps3.vue';
 import { getModule } from 'vuex-module-decorators';
@@ -204,7 +204,7 @@ const mainState = getModule(MainModule);
 @Component({
   components: {
     Icon,
-    SourcesList,
+    GatewaysList,
     SourceAuthenticate,
     Steps3,
   },

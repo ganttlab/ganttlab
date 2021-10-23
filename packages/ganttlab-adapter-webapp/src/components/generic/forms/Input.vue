@@ -28,7 +28,7 @@ export default class Input extends Vue {
   @Prop({ type: String }) readonly value!: string;
 
   mounted() {
-    ['keyup', 'keydown', 'keypress'].map(event => {
+    ['keyup', 'keydown', 'keypress'].forEach(event => {
       const el = this.$refs.inputEl as HTMLElement;
       el.addEventListener(event, $event => this.$emit(event, $event));
     });

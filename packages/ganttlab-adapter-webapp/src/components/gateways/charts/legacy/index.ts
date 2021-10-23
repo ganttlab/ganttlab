@@ -9,9 +9,7 @@ interface LegacyTask {
 
 export function getConvertedTasks(tasks: Array<Task>): Array<LegacyTask> {
   const convertedTasks: Array<LegacyTask> = [];
-  for (let index = 0; index < tasks.length; index++) {
-    const aTask = tasks[index];
-
+  for (const aTask of tasks) {
     // stripping task title to the first 42 characters
     let title = aTask.title;
     if (title.length > 42) {

@@ -98,7 +98,7 @@ import { Project } from 'ganttlab-entities';
     Icon,
   },
 })
-export default class ViewProjectConfigurator extends Vue {
+export default class ProjectViewConfigurator extends Vue {
   public search = '';
   public loading = false;
   public projects: Array<GitLabProject> | null = null;
