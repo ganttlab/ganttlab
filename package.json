@@ -15,7 +15,7 @@
     "clean:packages": "lerna run clean --parallel",
     "watch": "lerna run --parallel watch",
     "webapp": "yarn workspace ganttlab-adapter-webapp run serve",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix && yarn workspace ganttlab-adapter-webapp run lint",
     "lerna:changed": "lerna changed -al",
     "lerna:release": "lerna version --conventional-commits --changelog-preset angular --create-release gitlab"
   },
