@@ -3,7 +3,6 @@ import {
   Configuration,
   PaginatedListOfTasks,
   Task,
-  Project,
   Milestone,
   PaginatedListOfMilestones,
 } from 'ganttlab-entities';
@@ -24,9 +23,9 @@ export class ViewMilestoneGitLabStrategy
     configuration: Configuration,
   ): Promise<TasksAndMilestones> {
     const encodedProject = encodeURIComponent(
-      (configuration.project as Project).path as string,
+      configuration.project.path as string,
     );
-    const { data, headers } = await source.safeAxiosRequest<
+    const milestonesResponse = await source.safeAxiosRequest<
       Array<GitLabMilestone>
     >({
       method: 'GET',
@@ -42,10 +41,10 @@ export class ViewMilestoneGitLabStrategy
     let tasksForActiveMilestone: PaginatedListOfTasks | null = null;
     for (
       let milestoneIndex = 0;
-      milestoneIndex < data.length;
+      milestoneIndex < milestonesResponse.data.length;
       milestoneIndex++
     ) {
-      const gitlabMilestone = data[milestoneIndex];
+      const gitlabMilestone = milestonesResponse.data[milestoneIndex];
       const milestone = getMilestoneFromGitLabMilestone(gitlabMilestone);
 
       // loading tasks for the active milestone
@@ -64,33 +63,34 @@ export class ViewMilestoneGitLabStrategy
           },
         });
         const tasksList: Array<Task> = [];
-        for (let index = 0; index < data.length; index++) {
-          const gitlabIssue = data[index];
+        for (const gitlabIssue of data) {
           const task = getTaskFromGitLabIssue(gitlabIssue);
           tasksList.push(task);
         }
-        const byDueTasksList = tasksList.sort((a: Task, b: Task) => {
+        tasksList.sort((a: Task, b: Task) => {
           if (a.due && b.due) {
             return a.due.getTime() - b.due.getTime();
           }
           return 0;
         });
-        const gitlabPagination = getPaginationFromGitLabHeaders(headers);
+        const pagination = getPaginationFromGitLabHeaders(headers);
         tasksForActiveMilestone = new PaginatedListOfTasks(
-          byDueTasksList,
+          tasksList,
           configuration.tasks.page as number,
           configuration.tasks.pageSize as number,
-          gitlabPagination.previousPage,
-          gitlabPagination.nextPage,
-          gitlabPagination.lastPage,
-          gitlabPagination.total,
+          pagination.previousPage,
+          pagination.nextPage,
+          pagination.lastPage,
+          pagination.total,
         );
       }
 
       milestonesList.push(milestone);
     }
 
-    const gitlabPagination = getPaginationFromGitLabHeaders(headers);
+    const gitlabPagination = getPaginationFromGitLabHeaders(
+      milestonesResponse.headers,
+    );
 
     return new TasksAndMilestones(
       new PaginatedListOfMilestones(

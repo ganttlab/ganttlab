@@ -9,13 +9,12 @@ export function getTaskFromGitHubIssue(githubIssue: GitHubIssue): Task {
   const { startDate, dueDate } = issueDescriptionToTaskDetails(
     githubIssue.body,
   );
-  const task = new Task(
+  return new Task(
     githubIssue.title,
     githubIssue.html_url,
     startDate ? startDate : new Date(githubIssue.created_at),
     dueDate ? dueDate : undefined,
   );
-  return task;
 }
 
 export function getPaginationFromGitHubHeaders(
@@ -47,12 +46,11 @@ export function getPaginationFromGitHubHeaders(
 export function getMilestoneFromGitHubMilestone(
   githubMilestone: GitHubMilestone,
 ): Milestone {
-  const milestone = new Milestone(
+  return new Milestone(
     githubMilestone.title,
     githubMilestone.html_url,
     githubMilestone.description,
     undefined,
     githubMilestone.due_on ? new Date(githubMilestone.due_on) : undefined,
   );
-  return milestone;
 }

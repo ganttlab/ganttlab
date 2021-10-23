@@ -3,7 +3,6 @@ import {
   Configuration,
   PaginatedListOfTasks,
   Task,
-  Project,
 } from 'ganttlab-entities';
 import { GitLabGateway } from '../../../sources/gitlab/GitLabGateway';
 import { GitLabIssue } from '../../../sources/gitlab/types/GitLabIssue';
@@ -19,7 +18,7 @@ export class ViewProjectGitLabStrategy
     configuration: Configuration,
   ): Promise<PaginatedListOfTasks> {
     const encodedProject = encodeURIComponent(
-      (configuration.project as Project).path as string,
+      configuration.project.path as string,
     );
     const { data, headers } = await source.safeAxiosRequest<Array<GitLabIssue>>(
       {
@@ -34,12 +33,11 @@ export class ViewProjectGitLabStrategy
       },
     );
     const tasksList: Array<Task> = [];
-    for (let index = 0; index < data.length; index++) {
-      const gitlabIssue = data[index];
+    for (const gitlabIssue of data) {
       const task = getTaskFromGitLabIssue(gitlabIssue);
       tasksList.push(task);
     }
-    const byDueTasksList = tasksList.sort((a: Task, b: Task) => {
+    tasksList.sort((a: Task, b: Task) => {
       if (a.due && b.due) {
         return a.due.getTime() - b.due.getTime();
       }
@@ -47,7 +45,7 @@ export class ViewProjectGitLabStrategy
     });
     const gitlabPagination = getPaginationFromGitLabHeaders(headers);
     return new PaginatedListOfTasks(
-      byDueTasksList,
+      tasksList,
       configuration.tasks.page as number,
       configuration.tasks.pageSize as number,
       gitlabPagination.previousPage,

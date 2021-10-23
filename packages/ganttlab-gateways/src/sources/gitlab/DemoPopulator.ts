@@ -120,8 +120,7 @@ async function removeAllIssues(): Promise<void> {
     url: `/projects/${encodedProjectPath}/issues`,
   });
 
-  for (let index = 0; index < data.length; index++) {
-    const gitlabIssue = data[index];
+  for (const gitlabIssue of data) {
     await gateway.safeAxiosRequest({
       method: 'DELETE',
       url: `/projects/${encodedProjectPath}/issues/${gitlabIssue.iid}`,
@@ -136,8 +135,7 @@ async function removeAllMilestones(): Promise<void> {
     url: `/projects/${encodedProjectPath}/milestones`,
   });
 
-  for (let index = 0; index < data.length; index++) {
-    const gitlabMilestone = data[index];
+  for (const gitlabMilestone of data) {
     await gateway.safeAxiosRequest({
       method: 'DELETE',
       url: `/projects/${encodedProjectPath}/milestones/${gitlabMilestone.id}`,
@@ -146,8 +144,7 @@ async function removeAllMilestones(): Promise<void> {
 }
 
 async function createMilestones(): Promise<void> {
-  for (let index = 0; index < demoMilestones.length; index++) {
-    const aDemoMilestone = demoMilestones[index];
+  for (const aDemoMilestone of demoMilestones) {
     const { data } = await gateway.safeAxiosRequest<GitLabMilestoneWithId>({
       method: 'POST',
       url: `/projects/${encodedProjectPath}/milestones`,

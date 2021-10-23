@@ -47,8 +47,7 @@ export class GitHubGateway extends AxiosBackedAuthenticatableSource {
       },
     });
     const projectsList: Array<GitHubRepository> = [];
-    for (let index = 0; index < data.items.length; index++) {
-      const repo = data.items[index];
+    for (const repo of data.items) {
       projectsList.push(
         new GitHubRepository(
           repo.name,

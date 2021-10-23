@@ -30,12 +30,11 @@ export class ViewMineGitLabStrategy
       },
     );
     const tasksList: Array<Task> = [];
-    for (let index = 0; index < data.length; index++) {
-      const gitlabIssue = data[index];
+    for (const gitlabIssue of data) {
       const task = getTaskFromGitLabIssue(gitlabIssue);
       tasksList.push(task);
     }
-    const byDueTasksList = tasksList.sort((a: Task, b: Task) => {
+    tasksList.sort((a: Task, b: Task) => {
       if (a.due && b.due) {
         return a.due.getTime() - b.due.getTime();
       }
@@ -43,7 +42,7 @@ export class ViewMineGitLabStrategy
     });
     const gitlabPagination = getPaginationFromGitLabHeaders(headers);
     return new PaginatedListOfTasks(
-      byDueTasksList,
+      tasksList,
       configuration.tasks.page as number,
       configuration.tasks.pageSize as number,
       gitlabPagination.previousPage,

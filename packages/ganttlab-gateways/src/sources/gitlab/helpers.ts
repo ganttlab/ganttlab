@@ -8,7 +8,7 @@ export function getTaskFromGitLabIssue(gitlabIssue: GitLabIssue): Task {
   const { startDate, dueDate } = issueDescriptionToTaskDetails(
     gitlabIssue.description,
   );
-  const task = new Task(
+  return new Task(
     gitlabIssue.title,
     gitlabIssue.web_url,
     startDate
@@ -24,7 +24,6 @@ export function getTaskFromGitLabIssue(gitlabIssue: GitLabIssue): Task {
       ? new Date(gitlabIssue.milestone.due_date)
       : undefined,
   );
-  return task;
 }
 
 export function getPaginationFromGitLabHeaders(
@@ -52,7 +51,7 @@ export function getPaginationFromGitLabHeaders(
 export function getMilestoneFromGitLabMilestone(
   gitlabMilestone: GitLabMilestone,
 ): Milestone {
-  const milestone = new Milestone(
+  return new Milestone(
     gitlabMilestone.title,
     undefined,
     gitlabMilestone.description,
@@ -61,5 +60,4 @@ export function getMilestoneFromGitLabMilestone(
       : undefined,
     gitlabMilestone.due_date ? new Date(gitlabMilestone.due_date) : undefined,
   );
-  return milestone;
 }

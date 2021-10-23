@@ -5,7 +5,6 @@ import {
   Milestone,
   Configuration,
   Task,
-  Project,
   PaginatedListOfTasks,
 } from 'ganttlab-entities';
 import {
@@ -27,7 +26,7 @@ export class ViewMilestoneGitHubStrategy
       Array<GitHubMilestone>
     >({
       method: 'GET',
-      url: `/repos/${(configuration.project as Project).path}/milestones`,
+      url: `/repos/${configuration.project.path}/milestones`,
       params: {
         page: configuration.milestones.page,
         // eslint-disable-next-line @typescript-eslint/camelcase
@@ -59,36 +58,29 @@ export class ViewMilestoneGitHubStrategy
             page: configuration.tasks.page,
             // eslint-disable-next-line @typescript-eslint/camelcase
             per_page: configuration.tasks.pageSize,
-            q: `state:open repo:${
-              (configuration.project as Project).path
-            } milestone:"${milestone.name}"`,
+            q: `state:open repo:${configuration.project.path} milestone:"${milestone.name}"`,
           },
         });
 
         const tasksList: Array<Task> = [];
-        for (
-          let issueIndex = 0;
-          issueIndex < result.data.items.length;
-          issueIndex++
-        ) {
-          const githubIssue = result.data.items[issueIndex];
+        for (const githubIssue of result.data.items) {
           const task = getTaskFromGitHubIssue(githubIssue);
           tasksList.push(task);
         }
-        const byDueTasksList = tasksList.sort((a: Task, b: Task) => {
+        tasksList.sort((a: Task, b: Task) => {
           if (a.due && b.due) {
             return a.due.getTime() - b.due.getTime();
           }
           return 0;
         });
-        const githubPagination = getPaginationFromGitHubHeaders(result.headers);
+        const pagination = getPaginationFromGitHubHeaders(result.headers);
         tasksForActiveMilestone = new PaginatedListOfTasks(
-          byDueTasksList,
+          tasksList,
           configuration.tasks.page as number,
           configuration.tasks.pageSize as number,
-          githubPagination.previousPage,
-          githubPagination.nextPage,
-          githubPagination.lastPage,
+          pagination.previousPage,
+          pagination.nextPage,
+          pagination.lastPage,
         );
       }
 

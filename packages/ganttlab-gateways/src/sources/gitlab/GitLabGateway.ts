@@ -39,7 +39,7 @@ export class GitLabGateway extends AxiosBackedAuthenticatableSource {
     let uri = '/search';
     let toSearch = search;
     if (search.includes('/')) {
-      const splitted = search.split('/') as Array<string>;
+      const splitted = search.split('/');
       toSearch = splitted.pop() as string;
       const group = splitted.join('/');
       uri = `/groups/${encodeURI(group)}/search`;
@@ -53,8 +53,7 @@ export class GitLabGateway extends AxiosBackedAuthenticatableSource {
       },
     });
     const projectsList: Array<GitLabProject> = [];
-    for (let index = 0; index < data.length; index++) {
-      const project = data[index];
+    for (const project of data) {
       projectsList.push(
         new GitLabProject(
           project.name,
