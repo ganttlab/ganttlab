@@ -8,7 +8,8 @@
     "serve": "vue-cli-service serve",
     "build:lib": "echo 'no lib to build here'",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "core-js": "^3.6.4",
