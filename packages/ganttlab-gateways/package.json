@@ -21,6 +21,6 @@
     "axios": "^0.19.2",
     "ganttlab-entities": "0.1.1",
     "ganttlab-use-cases": "0.1.1",
-    "parse-link-header": "^1.0.1"
+    "parse-link-header": "^2.0.0"
   }
 }
